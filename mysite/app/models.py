@@ -111,3 +111,4 @@ class Customer(models.Model):
 #
 #     def __str__(self):
 #         return 'Характеристики для товара {}'.format(self.name)
+
