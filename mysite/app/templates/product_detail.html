@@ -20,18 +20,12 @@
         <p>Описание: {{ product.description }}</p>
     </div>
     <p class="mt-4">Характеристики: </p>
+    {% if product.category.slug == 'notebooks' %}
+        {% include 'notebook_specification.html' %}
+    {% else %}
+        {% include 'smartphone_specification.html' %}
+    {% endif %}
 
-<!--    {% if product.category.slug == 'notebook' %}-->
-<!--    {% include 'notebook_specification.html' %}-->
-<!--    {% endif %}-->
-
-<!--    {% include 'smartphone_specification.html' %}-->
-<!--    {% include 'notebook_specification.html' %}-->
-<!--    {% if product.category.slug == 'notebook' %}-->
-<!--    {% endif %}-->
-<!--    {% if product.category.slug == 'smartphone' %}-->
-<!--        {% include 'smartphone_specification.html' %}-->
-<!--    {% endif %}-->
 </div>
 
 {% endblock content %}
