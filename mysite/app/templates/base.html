@@ -19,7 +19,7 @@
             <div class="container px-4 px-lg-5">
                 <a class="navbar-brand" href="#!">Start Bootstrap</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <a href="{% url 'cart' %}" class="nav-link">Корзина<span class="badge badge-pill badge-danger">0</span></a>
+                <a href="{% url 'cart' %}" class="nav-link">Корзина<span style="color: black" class="badge badge-pill badge-danger">{{ cart.product.count }}</span></a>
             </div>
         </nav>
         <!-- Header-->
