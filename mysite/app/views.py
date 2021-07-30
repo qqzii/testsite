@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 
 from .models import Notebook, Smartphone, Category, LatestProducts, Cart, Customer, CartProduct
 from .mixins import CategoryDetailMixin, CartMixin
+from .forms import OrderForm
 
 
 class BaseView(CartMixin, View):
@@ -120,3 +121,14 @@ class CartView(CartMixin, View):
             'categories': categories
         }
         return render(request, 'cart.html', context)
+
+
+class CheckoutView(CartMixin, View):
+
+    def get(self, request, *args, **kwargs):
+        form = OrderForm(request.POST or None)
+        context = {
+            'cart': self.cart,
+            'form': form
+        }
+        return render(request, 'checkout.html', context)

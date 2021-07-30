@@ -46,12 +46,13 @@
       </td>
     </tr>
   {% endfor %}
-  <tr>
-    <td colspan="2"></td>
-    <td>Итого:</td>
-    <td>{{ cart.total_products }}</td>
-    <td><strong>{{ cart.final_price }}BYN</strong></td>
-  </tr>
+    <tr>
+        <td colspan="2"></td>
+        <td>Итого:</td>
+        <td>{{ cart.total_products }}</td>
+        <td><strong>{{ cart.final_price }}BYN</strong></td>
+        <td><a href="{% url 'checkout' %}"><button class="btn btn-primary">Перейти к оформлению</button></a></td>
+    </tr>
   </tbody>
 </table>
 {% endif %}
