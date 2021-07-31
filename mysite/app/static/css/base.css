@@ -5,14 +5,15 @@
   border: 0;
   text-decoration:none;
 }
-body{
-    height: 10000px;
-}
+
 .container{
     width: 1310px;
     height: 100%;
     margin: 0 auto;
 }
+
+
+
 .header{
     height: 81px;
     background-color: black;
@@ -27,4 +28,135 @@ body{
     font-family: 'Bebas Neue', cursive;
     color: #F2ECEC;
     font-size: 21px;
+}
+.header-list{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header-item{
+    list-style-type: none;
+}
+.header-cart{
+    margin-left: 45px;
+}
+.cart-count{
+    margin-left: 10px;
+}
+
+/*шш*/
+
+.search{
+    height: 60px;
+    background-color: #E5CBCB;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-item{
+    border: 1px solid black;
+    width: 800px;
+    height: 34px;
+    background-color: #4ac1f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.main{
+    width: 100%;
+    height: 100%;
+    background-color: #F2ECEC;
+}
+.main-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px 0 16px 0;
+    flex-wrap: wrap;
+}
+.main-block{
+    width: 310px;
+    height: 310px;
+    margin: 10px 0 10px 0;
+    border-radius: 20px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+.main-block:nth-child(odd){
+    background-image: url("../img/notebooks_category.jpeg");
+    display: flex;
+    justify-content: start;
+    align-items: flex-end;
+}
+.main-block:nth-child(even){
+    background-image: url("../img/smartphone_category.jpg");
+}
+.block-title{
+    font-family: 'Open Sans', sans-serif;
+    color: darkred;
+    font-size: 18px;
+    margin: 10px;
+}
+
+
+
+.contacts{
+    height: 100%;
+    background-color: #E5CBCB;
+}
+.contacts-container{
+    padding: 16px 0 16px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.contacts-block{
+    font-family: 'Open Sans', sans-serif;
+    color: #241D1D;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.contacts-title{
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+.contacts-numbers{
+    font-size: 20px;
+    font-weight: 600;
+}
+.contacts-address{
+    font-size: 22px;
+    font-weight: 700;
+}
+.contacts-map{
+    height: 400px;
+    width: 740px;
+    background-color: darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.footer{
+    height: 40px;
+    background-color: #201D1D;
+}
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-text{
+    font-family: 'Teko', sans-serif;
+    font-size: 20px;
+    color: #F2F2F2;
+}
+.footer-r{
+    font-size: 24px;
 }

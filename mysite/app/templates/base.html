@@ -3,22 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
+
+    <script src="../static/js/base.js"></script>
+
     <link href="../static/css/base.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
     <section class="header">
         <div class="container">
-            <a href=""><img src="../static/img/logo.png" class="logo header-logo" alt=""></a>
-            <a href="" class="header-link">Категории</a>
-            <a href="" class="header-link">Корзина<span></span></a>
-            <a href="" class="header-link">Личный кабинет</a>
+            <ul class="header-list">
+                <li class="header-item"><a href=""><img src="../static/img/logo.png" class="logo header-logo" alt=""></a></li>
+                <li class="header-item">
+                    <a href="" class="header-link">категории</a>
+                </li>
+                <li class="header-item">
+                    <ul class="header-list">
+                        <li class="header-item"><a href="" class="header-link">Личный кабинет</a></li>
+                        <li class="header-item"><a href="" class="header-link header-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="cart-count">0</span></a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
     </section>
 
+    <section class="search">
+        <div class="container search-container">
+            <div class="search-item">
+                <h1>Строка поиска</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="main">
+        <div class="container main-container">
+            <a class="main-block" href="">
+                <h3 class="block-title">Ноутбуки</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Смартфоны</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Ноутбуки</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Смартфоны</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Ноутбуки</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Смартфоны</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Ноутбуки</h3>
+            </a>
+            <a class="main-block" href="">
+                <h3 class="block-title">Смартфоны</h3>
+            </a>
+        </div>
+    </section>
+
+    <section class="contacts">
+        <div class="container contacts-container">
+            <div class="contacts-block">
+            <h2 class="contacts-title">Контакты</h2>
+            <div class="contacts-numbers">
+                <p>+375 29 3481101</p>
+                <p>+375 44 0017177</p>
+                <p>+375 33 9996699</p>
+            </div>
+            <p class="contacts-address">г. Минск, пр. Независимости 999, к. 2А</p>
+            </div>
+            <div class="contacts-block contacts-map">
+                <h1>Карта</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="container footer-container">
+            <p class="footer-text">created by Artsemi Marozau <span class="footer-r">®</span> 2021</p>
+        </div>
+    </section>
 </body>
 </html>
 
