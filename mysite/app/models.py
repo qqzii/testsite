@@ -100,7 +100,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     # MIN_RESOLUTION = (400, 400)
-    # MAX_RESOLUTION = (800, 800)
+    # MAX_RESOLUTION = (400, 600)
     # RESIZE_RESOLUTION = (200, 200)
     # MAX_IMAGE_SIZE = 5242880
 
@@ -140,8 +140,6 @@ class Product(models.Model):
     #     )
     #     super().save(*args, **kwargs)
 
-# классы спецификации продуктов
-
 
 class Notebook(Product):
 
@@ -178,12 +176,6 @@ class Smartphone(Product):
 
     def get_absolute_url(self):
         return get_product_url(self, 'product_detail')
-
-    # @property
-    # def sd(self):
-    #     if self.sd:
-    #         return 'Да'
-    #     return 'Нет'
 
 
 class CartProduct(models.Model):
