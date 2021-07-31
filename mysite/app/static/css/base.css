@@ -1,0 +1,30 @@
+*{
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  text-decoration:none;
+}
+body{
+    height: 10000px;
+}
+.container{
+    width: 1310px;
+    height: 100%;
+    margin: 0 auto;
+}
+.header{
+    height: 81px;
+    background-color: black;
+    position: sticky;
+    top: 0;
+}
+.logo{
+    height: 81px;
+    width: auto;
+}
+.header-link{
+    font-family: 'Bebas Neue', cursive;
+    color: #F2ECEC;
+    font-size: 21px;
+}
