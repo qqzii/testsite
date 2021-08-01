@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <title>Главная</title>
 
-    <script src="../static/js/base.js"></script>
-
     <link href="../static/css/base.css" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -21,15 +19,27 @@
 
     <section class="header">
         <div class="container">
-            <ul class="header-list">
-                <li class="header-item"><a href=""><img src="../static/img/logo.png" class="logo header-logo" alt=""></a></li>
-                <li class="header-item">
-                    <a href="" class="header-link">категории</a>
+            <ul class="header__list">
+                <li class="header__item"><a href=""><img src="../static/img/logo.png" class="logo header-logo" alt=""></a></li>
+                <li class="header__item">
+                    <div class="header__burger">
+                        <p class="header__link">Категории</p>
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="header_burger-list">
+                            <li>
+                                <a href="" class="header__link">Ноутбуки</a>
+                            </li>
+                            <li>
+                                <a href="" class="header__link">Смартфоны</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </li>
-                <li class="header-item">
-                    <ul class="header-list">
-                        <li class="header-item"><a href="" class="header-link">Личный кабинет</a></li>
-                        <li class="header-item"><a href="" class="header-link header-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="cart-count">0</span></a></li>
+                <li class="header__item">
+                    <ul class="header__list">
+                        <li class="header__item"><a href="" class="header__link">Личный кабинет</a></li>
+                        <li class="header__item"><a href="" class="header__link header__cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="cart__count">0</span></a></li>
                     </ul>
                 </li>
             </ul>
@@ -37,64 +47,67 @@
     </section>
 
     <section class="search">
-        <div class="container search-container">
-            <div class="search-item">
+        <div class="container search__container">
+            <div class="search__item">
                 <h1>Строка поиска</h1>
             </div>
         </div>
     </section>
 
     <section class="main">
-        <div class="container main-container">
-            <a class="main-block" href="">
-                <h3 class="block-title">Ноутбуки</h3>
+        <div class="container main__container">
+            <a class="main__block" href="">
+                <h3 class="block__title">Ноутбуки</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Смартфоны</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Смартфоны</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Ноутбуки</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Ноутбуки</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Смартфоны</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Смартфоны</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Ноутбуки</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Ноутбуки</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Смартфоны</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Смартфоны</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Ноутбуки</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Ноутбуки</h3>
             </a>
-            <a class="main-block" href="">
-                <h3 class="block-title">Смартфоны</h3>
+            <a class="main__block" href="">
+                <h3 class="block__title">Смартфоны</h3>
             </a>
         </div>
     </section>
 
     <section class="contacts">
-        <div class="container contacts-container">
-            <div class="contacts-block">
-            <h2 class="contacts-title">Контакты</h2>
-            <div class="contacts-numbers">
+        <div class="container contacts__container">
+            <div class="contacts__block">
+            <h2 class="contacts__title">Контакты</h2>
+            <div class="contacts__numbers">
                 <p>+375 29 3481101</p>
                 <p>+375 44 0017177</p>
                 <p>+375 33 9996699</p>
             </div>
-            <p class="contacts-address">г. Минск, пр. Независимости 999, к. 2А</p>
+            <p class="contacts__address">г. Минск, пр. Независимости 999, к. 2А</p>
             </div>
-            <div class="contacts-block contacts-map">
+            <div class="contacts__block contacts__map">
                 <h1>Карта</h1>
             </div>
         </div>
     </section>
 
     <section class="footer">
-        <div class="container footer-container">
-            <p class="footer-text">created by Artsemi Marozau <span class="footer-r">®</span> 2021</p>
+        <div class="container footer__container">
+            <p class="footer__text">created by Artsemi Marozau <span class="footer__r">®</span> 2021</p>
         </div>
     </section>
+
+<script src="../static/js/base.js"></script>
+
 </body>
 </html>
 
