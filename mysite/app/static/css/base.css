@@ -43,21 +43,25 @@
 .cart__count{
     margin-left: 10px;
 }
+
 .header__burger{
+
 }
 .header__menu{
+    transition: all 0.3s ease 0s;
     position: fixed;
     top: -100%;
 }
 .header__menu.active{
-    top: 0;
+    top: 75px;
 }
-.header_burger-list{
+.header__list_item{
+    background-color: black;
+}
+.header__burger-list{
 
 }
-.header__burger-list .header__link{
-    margin-bottom: 10px;
-}
+
 
 
 
