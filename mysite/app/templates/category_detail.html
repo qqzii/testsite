@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
     <section class="breadcrumb">
         <div class="container breadcrumb__container">
             <ul class="breadcrumb__view">
                 <li class="breadcrumb__item"><a href="" class="breadcrumb__home">Главная</a>
                 <li class="breadcrumb__item"><p class="breadcrumb__slash">|</p></li>
-                <li class="breadcrumb__item breadcrumb__last-item"><p class="breadcrumb__last-item">Категория</p></li>
+                <li class="breadcrumb__item breadcrumb__last-item"><p class="breadcrumb__last-item">{{ category.name}}</p></li>
                 </li>
             </ul>
             <div class="breadcrumb__line"></div>
@@ -30,39 +29,4 @@
             {% endfor %}
         </div>
     </section>
-
-    <section class="footer">
-        <div class="container footer__container">
-            <p class="footer__text">created by Artsemi Marozau <span class="footer__r">®</span> 2021</p>
-        </div>
-    </section>
-
-{% endblock content %}
-
-
-
-<!--<nav aria-label="breadcrumb">-->
-<!--  <ol class="breadcrumb">-->
-<!--    <li class="breadcrumb-item"><a href="{% url 'base' %}">Домашняя</a></li>-->
-<!--    <li class="breadcrumb-item active">{{ category.name}}</li>-->
-<!--  </ol>-->
-<!--</nav>-->
-
-<!--<div class="row">-->
-<!--            {% for product in category_products %}-->
-<!--                <div class="col-lg-4 col-md-6 mb-4">-->
-<!--                    <div class="card h-100">-->
-<!--                        <a href="{{ product.get_absolute_url }}"><img src="{{ product.image.url }}" alt="" class="card-img-top"></a>-->
-<!--                        <div class="card-body">-->
-<!--                            <h4 class="card-title">-->
-<!--                                <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>-->
-<!--                            </h4>-->
-<!--                            <h5>{{ product.price }} BYN</h5>-->
-<!--                            <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}">-->
-<!--                                <button class="btn btn-danger">Добавить в корзину</button>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            {% endfor %}-->
-<!--            </div>-->
+    {% endblock content %}
