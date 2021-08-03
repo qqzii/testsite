@@ -1,57 +1,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>category</h1>
+
+    <section class="breadcrumb">
+        <div class="container breadcrumb__container">
+            <ul class="breadcrumb__view">
+                <li class="breadcrumb__item"><a href="" class="breadcrumb__home">Главная</a>
+                <li class="breadcrumb__item"><p class="breadcrumb__slash">|</p></li>
+                <li class="breadcrumb__item breadcrumb__last-item"><p class="breadcrumb__last-item">Категория</p></li>
+                </li>
+            </ul>
+            <div class="breadcrumb__line"></div>
+        </div>
+    </section>
+
+    <section class="products">
+        <div class="container products__container">
+            {% for product in category_products %}
+                <div class="products__block">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{{ product.image.url }}" alt="" class="products__image pb-7">
+                        <h2 class="products__title pl-10 pb-7">{{ product.title }}</h2>
+                        <h4 class="products__price pl-10">{{ product.price }} BYN</h4>
+                        <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}" class="products__add-to-cart">
+                            <button class="products__button">Добавить в корзину</button>
+                        </a>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="container footer__container">
+            <p class="footer__text">created by Artsemi Marozau <span class="footer__r">®</span> 2021</p>
+        </div>
+    </section>
+
 {% endblock content %}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--{% extends 'base.html' %}-->
-
-<!--{% block content %}-->
 
 <!--<nav aria-label="breadcrumb">-->
 <!--  <ol class="breadcrumb">-->
@@ -78,5 +66,3 @@
 <!--                </div>-->
 <!--            {% endfor %}-->
 <!--            </div>-->
-
-<!--{% endblock content %}-->
