@@ -48,8 +48,8 @@
     flex-wrap: wrap;
 }
 .products__block{
-    height: auto;
-    margin: 10px 0 10px 0;
+    background-color: white;
+    margin-top: 10px;
     width: 250px;
     font-family: 'Open Sans', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.38);
@@ -79,7 +79,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 46px;
     width: 100%;
     background: #D76730;
     color: #241D1D;

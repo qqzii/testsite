@@ -7,7 +7,7 @@ from ..models import Smartphone
 register = template.Library()
 
 TABLE_HEAD = """
-                <table class="table">
+                <table class="product-main__table">
                   <tbody>
              """
 
@@ -17,9 +17,9 @@ TABLE_TAIL = """
              """
 
 TABLE_CONTENT = """
-                    <tr>
-                      <td>{name}</td>
-                      <td>{value}</td>
+                    <tr class="product-main__row">
+                      <td class="product-main__col">{name}</td>
+                      <td class="product-main__col">{value}</td>
                     </tr>
                 """
 
