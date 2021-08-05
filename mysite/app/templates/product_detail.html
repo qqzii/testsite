@@ -3,30 +3,35 @@
 {% load specifications %}
 
 {% block content %}
+    <section class="breadcrumb">
+        <div class="container breadcrumb__container">
+            <ul class="breadcrumb__view">
+                <li class="breadcrumb__item"><a href="/" class="breadcrumb__link">Главная</a>
+                <li class="breadcrumb__item"><p class="breadcrumb__slash">|</p></li>
+                <li class="breadcrumb__item breadcrumb"><a href="{{ category.url }}" class="breadcrumb__link">{{ category_name }}</a></li>
+                <li class="breadcrumb__item"><p class="breadcrumb__slash">|</p></li>
+                <li class="breadcrumb__item breadcrumb__last-item"><p class="breadcrumb__last-item">{{ product.title }}</p></li>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{% url 'base' %}">Домашняя</a></li>
-    <li class="breadcrumb-item"><a href="#">{{ product.category.name}}</a></li>
-    <li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
-  </ol>
-</nav>
-
-<div class="row">
-    <div class="col-md-4">
-        <img src="{{ product.image.url }}" class="image-fluid">
-    </div>
-    <div class="col-md-8">
-        <h3>{{ product.title }}</h3>
-        <p>Цена: {{ product.price }} BYN</p>
-        <p>Описание: {{ product.description }}</p>
-        <a href="{% url 'add_to_cart' ct_model=ct_model slug=product.slug %}"><button class="btn btn-danger">Добавить в корзину</button></a>
-    </div>
-    <div class="mt-4">
-        <p class="mt-4">Характеристики: </p>
-        {{ product|product_spec }}
-    </div>
-
-</div>
-
-{% endblock content %}
+    <section class="product-main">
+        <div class="container product-main__container">
+            <div class="product-main__top-block">
+                <img src="{{ product.image.url }}" alt="" class="product-main__image">
+                <div class="product-main__description">
+                    <h2 class="product-main__title">{{ product.title }}</h2>
+                    <p class="product-main__briefly">{{ product.description }}</p>
+                    <h4 class="product-main__price">{{ product.price }} BYN</h4>
+                    <a href="" class="product-main__add-to-cart">
+                        <button class="products__button">Добавить в корзину</button>
+                    </a>
+                </div>
+            </div>
+            <div class="product-main__characteristics">
+                {{ product|product_spec }}
+            </div>
+        </div>
+    </section>
+{% endblock %}

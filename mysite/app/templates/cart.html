@@ -1,60 +1,157 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Главная</title>
 
-{% block content %}
+    <link href="../static/css/reset_file.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/base.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/category_detail.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/product_detail.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/cart.css" rel="stylesheet" type="text/css">
 
-<h3 class="text-center mt-5 mb-5">Ваша корзина {% if not cart.product.count %}пуста{% endif %}</h3>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-{% if messages %}
-  {% for message in messages %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>{{ message }}</strong>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+</head>
+<body>
 
-  {% endfor %}
-{% endif %}
-{% if cart.product.count %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Наименование</th>
-      <th scope="col">Изображение</th>
-      <th scope="col">Цена</th>
-      <th scope="col">Кол-во</th>
-      <th scope="col">Общая цена</th>
-      <th scope="col">Действие</th>
-    </tr>
-  </thead>
-  <tbody>
-  {% for item in cart.product.all %}
-    <tr>
-      <th scope="row">{{ item.content_object.title }}</th>
-      <td class="w-25"><img src="{{ item.content_object.image.url }}" class="img-fluid" alt=""></td>
-      <td>{{ item.content_object.price }} BYN</td>
-      <td>
-        <form action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">
-          {% csrf_token %}
-          <input type="number" class="form-control" style="width: 70px" name="qty" min="1" value="{{ item.qty }}">
-          <br>
-          <input type="submit" class="btn btn-primary" value="Изменить">
-        </form>
-      </td>
-      <td>{{ item.final_price }} BYN</td>
-      <td>
-        <a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}"><button class="btn btn-danger">Удалить из корзины</button></a>
-      </td>
-    </tr>
-  {% endfor %}
-    <tr>
-        <td colspan="2"></td>
-        <td>Итого:</td>
-        <td>{{ cart.total_products }}</td>
-        <td><strong>{{ cart.final_price }}BYN</strong></td>
-        <td><a href="{% url 'checkout' %}"><button class="btn btn-primary">Перейти к оформлению</button></a></td>
-    </tr>
-  </tbody>
-</table>
-{% endif %}
+    <section class="header">
+        <div class="container">
+            <ul class="header__list">
+                <li class="header__item"><a href=""><img src="../static/img/logo.png" class="logo header-logo" alt=""></a></li>
+                <li class="header__item">
+                    <div class="header__burger">
+                        <p class="header__link">Категории</p>
+                    </div>
+                    <nav class="header__menu">
+                        <ul class="header__item">
+                            {% for category in categories %}
+                                <li class="header__list_item">
+                                    <a href="{{ category.url }}" class="header__link">{{ category.name }} ({{ category.count }})</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                </li>
+                <li class="header__item">
+                    <ul class="header__list">
+                        <li class="header__item"><a href="" class="header__link">Личный кабинет</a></li>
+                        <li class="header__item"><a href="{% url 'cart' %}" class="header__link header__cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i><span class="cart__count">{{ cart.product.count }}</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-{% endblock content %}
+    <section class="search">
+        <div class="container search__container">
+            <div class="search__item">
+                <h1>Строка поиска</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="cart">
+        <div class="container cart__container">
+            <h2 class="cart__your-cart">Ваша корзина</h2>
+            <table class="cart__table">
+                <thead>
+                    <tr>
+                        <th scope="col">Наименование</th>
+                        <th scope="col">Изображение</th>
+                        <th scope="col">Цена</th>
+                        <th scope="col">Количество</th>
+                        <th scope="col">Общая цена</th>
+                        <th scope="col">1</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="container footer__container">
+            <p class="footer__text">created by Artsemi Marozau <span class="footer__r">®</span> 2021</p>
+        </div>
+    </section>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="../static/js/base.js"></script>
+
+</body>
+</html>
+
+
+
+
+<!--{% extends 'base.html' %}-->
+
+<!--{% block content %}-->
+
+<!--<h3 class="text-center mt-5 mb-5">Ваша корзина {% if not cart.product.count %}пуста{% endif %}</h3>-->
+
+<!--{% if messages %}-->
+<!--  {% for message in messages %}-->
+
+<!--    <div class="alert alert-success alert-dismissible fade show" role="alert">-->
+<!--      <strong>{{ message }}</strong>-->
+<!--      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>-->
+<!--    </div>-->
+
+<!--  {% endfor %}-->
+<!--{% endif %}-->
+<!--{% if cart.product.count %}-->
+<!--<table class="table">-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th scope="col">Наименование</th>-->
+<!--      <th scope="col">Изображение</th>-->
+<!--      <th scope="col">Цена</th>-->
+<!--      <th scope="col">Кол-во</th>-->
+<!--      <th scope="col">Общая цена</th>-->
+<!--      <th scope="col">Действие</th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  {% for item in cart.product.all %}-->
+<!--    <tr>-->
+<!--      <th scope="row">{{ item.content_object.title }}</th>-->
+<!--      <td class="w-25"><img src="{{ item.content_object.image.url }}" class="img-fluid" alt=""></td>-->
+<!--      <td>{{ item.content_object.price }} BYN</td>-->
+<!--      <td>-->
+<!--        <form action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">-->
+<!--          {% csrf_token %}-->
+<!--          <input type="number" class="form-control" style="width: 70px" name="qty" min="1" value="{{ item.qty }}">-->
+<!--          <br>-->
+<!--          <input type="submit" class="btn btn-primary" value="Изменить">-->
+<!--        </form>-->
+<!--      </td>-->
+<!--      <td>{{ item.final_price }} BYN</td>-->
+<!--      <td>-->
+<!--        <a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}"><button class="btn btn-danger">Удалить из корзины</button></a>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--  {% endfor %}-->
+<!--    <tr>-->
+<!--        <td colspan="2"></td>-->
+<!--        <td>Итого:</td>-->
+<!--        <td>{{ cart.total_products }}</td>-->
+<!--        <td><strong>{{ cart.final_price }}BYN</strong></td>-->
+<!--        <td><a href="{% url 'checkout' %}"><button class="btn btn-primary">Перейти к оформлению</button></a></td>-->
+<!--    </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<!--{% endif %}-->
+
+<!--{% endblock content %}-->
