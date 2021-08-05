@@ -45,16 +45,27 @@
     box-shadow: 0 0 10px rgba(0,0,0,0.25);
 }
 .product-main__characteristics{
-    padding-top: 50px;
+    padding: 50px 50px 10px 50px;
     font-family: 'Open Sans', sans-serif;
     color: #241D1D;
+    font-size: 22px;
+    font-weight: 500;
 }
 .product-main__table{
-
+    border-collapse: collapse;
+    width: 100%;
 }
 .product-main__row{
-    border-bottom: 1px solid red;
+    border-bottom: 0.5px solid #7B7B7B;
 }
 .product-main__col{
-
+    padding: 5px 0 5px 0;
+    width: 50%;
+}
+.product-main__col:last-child{
+    font-weight: 600;
+    padding-left: 50px;
+}
+.product-main__row:last-child{
+    border: none;
 }
