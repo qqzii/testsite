@@ -7,7 +7,7 @@
 .breadcrumb__view{
     display: flex;
 }
-.breadcrumb__home{
+.breadcrumb__link{
     color: #241D1D;
 }
 .breadcrumb__item{
@@ -66,12 +66,12 @@
 }
 .products__title{
     font-size: 21px;
-    font-weight: 700;
+    font-weight: 600;
     color: #241D1D;
 }
 .products__price{
     font-size: 19px;
-    font-weight: 600;
+    font-weight: 500;
     color: #332929;
     padding-bottom: 25px;
 }
