@@ -1,12 +1,19 @@
 .cart{
-
+    background-color: #F2ECEC;
 }
 .cart__container{
 
 }
 .cart__your-cart{
-
+    text-align: center;
+    margin-top: 15px;
 }
 .cart__table{
-
+    margin-top: 25px;
+    margin-bottom: 20px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #241D1D;
+    font-size: 22px;
+    font-weight: 500;
 }
