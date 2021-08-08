@@ -1,49 +1,59 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% if cart.product.count %}
-        <section class="cart">
-            <div class="container cart__container">
-                <h2 class="cart__your-cart">Ваша корзина</h2>
+    <section class="cart">
+        <div class="container cart__container">
+            <h2 class="cart__your-cart">Ваша корзина {% if not cart.product.count %}пуста{% endif %}</h2>
+            {% if cart.product.count %}
                 <table class="cart__table">
                     <thead>
-                        <tr>
-                            <th>Наименование</th>
-                            <th>Изображение</th>
-                            <th>Цена</th>
-                            <th>Количество</th>
-                            <th>Общая цена</th>
-                            <th>Удалить товар из корзины</th>
+                        <tr class="cart__head">
+                            <th class="cart__col-title">Наименование</th>
+                            <th class="cart__col-img">Изображение</th>
+                            <th class="cart__col-price">Цена</th>
+                            <th class="cart__col-qty">Количество</th>
+                            <th class="cart__col-total-price">Общая цена</th>
+                            <th class="cart__col-delete">Удалить</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for item in cart.product.all %}
                             <tr>
-                                <th>{{ item.content_object.title }}</th>
+                                <th class="fs-20 fw-600">{{ item.content_object.title }}</th>
                                 <th>
                                     <img src="{{ item.content_object.image.url }}" alt="" class="products__image">
                                 </th>
-                                <th>{{ item.content_object.price }} BYN</th>
+                                <th class="fs-20 fw-500">{{ item.content_object.price }} BYN</th>
                                 <th>
-                                    <form action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">
-                                    {% csrf_token %}
-                                    <input type="number" name="qty" min="1" value="{{ item.qty }}">
-                                    <input type="submit" value="Изменить">
+                                    <form class="cart__form" action="{% url 'change_qty' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="submit" value="Изменить" class="products__button cart__button">
+                                        <input class="cart__qty" type="number" name="qty" min="1" value="{{ item.qty }}">
                                     </form>
                                 </th>
-                                <th>{{ item.final_price }} BYN</th>
+                                <th class="fs-20 fw-500">{{ item.final_price }} BYN</th>
                                 <th>
-                                    <a href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}">
-                                        <button>Удалить</button>
+                                    <a class="cart__button" href="{% url 'delete_from_cart' ct_model=item.content_object.get_model_name slug=item.content_object.slug %}">
+                                        <button class="products__button">Удалить</button>
                                     </a>
                                 </th>
                             </tr>
                         {% endfor %}
+                        <tr>
+                            <th class="fs-20 fw-600" colspan="3">Итого</th>
+                            <th class="fs-20 fw-600">{{ cart.total_products }}</th>
+                            <th class="fs-20 fw-600">{{ cart.final_price }}BYN</th>
+                        </tr>
                     </tbody>
                 </table>
+            <div class="cart__go-to-checkout">
+                <a href="{% url 'checkout' %}">
+                    <button class="products__button">Оформить заказ</button>
+                </a>
             </div>
-        </section>
-    {% endif %}
+            {% endif %}
+        </div>
+    </section>
 {% endblock content %}
 
 
