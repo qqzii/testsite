@@ -38,8 +38,6 @@ class ProductDetailView(CartMixin, CategoryDetailMixin, DetailView):
         self.queryset = self.model._base_manager.all()
         return super().dispatch(request, *args, **kwargs)
 
-    # model = Model
-    # queryset = Model.obj.all()
     context_object_name = 'product'
     template_name = 'product_detail.html'
     slug_url_kwarg = 'slug'

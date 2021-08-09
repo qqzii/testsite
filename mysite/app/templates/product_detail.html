@@ -24,7 +24,7 @@
                     <h2 class="product-main__title">{{ product.title }}</h2>
                     <p class="product-main__briefly">{{ product.description }}</p>
                     <h4 class="product-main__price">{{ product.price }} BYN</h4>
-                    <a href="" class="product-main__add-to-cart">
+                    <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}" class="product-main__add-to-cart">
                         <button name="add_to_cart" class="products__button">Добавить в корзину</button>
                     </a>
                 </div>

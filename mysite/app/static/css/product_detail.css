@@ -42,7 +42,7 @@
     font-size: 19px;
     font-weight: 500;
     background: #D76730;
-    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 .product-main__characteristics{
     padding: 50px 50px 10px 50px;
