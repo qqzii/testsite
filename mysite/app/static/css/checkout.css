@@ -1,0 +1,62 @@
+.checkout__col-title{
+    width: 20%;
+}
+.checkout__col-img{
+    width: 25%;
+}
+.checkout__col-price{
+    width: 17%;
+}
+.checkout__col-qty{
+    width: 20%;
+}
+.checkout__col-total-price{
+    width: 18%;
+}
+.checkout__div{
+    padding: 16px 55px 20px 55px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    margin: 16px auto 0 auto;
+    width: 500px;
+}
+.checkout__title{
+    font-size: 24px;
+    text-align: center;
+}
+.checkout__form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+}
+.checkout__form .textinput, .select, .textarea{
+    background-color: #E4E4E4;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
+    color: #241D1D;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.checkout__form .textinput, .select{
+    height: 30px;
+}
+.checkout__form .textarea{
+    height: 65px;
+}
+.form-group{
+    width: 100%;
+    margin-top: 20px;
+}
+.requiredField{
+    font-family: 'Open Sans', sans-serif;
+    color: #241D1D;
+    font-size: 16px;
+    font-weight: 500;
+}
+.asteriskField{
+    color: #DA2525;
+    font-weight: 700;
+    font-size: 13px;
+}
