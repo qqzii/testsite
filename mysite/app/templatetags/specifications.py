@@ -1,8 +1,6 @@
 from django import template
 from django.utils.safestring import mark_safe
 
-from ..models import Smartphone
-# from app.models import Smartphone
 
 register = template.Library()
 
@@ -95,15 +93,78 @@ PRODUCT_SPEC = {
         'Операционная система': 'operating_system'
     },
     'smartphone': {
-        'Диагональ': 'diagonal',
-        'Тип дисплея': 'display_type',
-        'Разрешение экрана': 'resolution',
-        'Объем батареи': 'accum_volume',
+        'Дата выхода на рынок': 'market_date',
+        'Тип': 'type',
+        'Операционная система': 'operating_system',
+        'Версия операционной системы': 'version_operating_system',
+        'Размер экрана': 'screen_size',
+        'Разрешение экрана': 'screen_resolution',
         'Оперативная память': 'ram',
-        'Наличие слота для SD карты': 'sd',
-        'Максимальный объем SD карты': 'sd_volume_max',
-        'Главная камера (МП)': 'main_cam_mp',
-        'Фронтальная камера (МП)': 'frontal_cam_mp'
+        'Флэш-память': 'flash_memory',
+        'Количество основных камер': 'number_of_main_cameras',
+        'Количество точек матрицы': 'number_of_matrix_points',
+        'Количество SIM-карт': 'number_of_sim',
+        'Формат SIM-карты': 'format_of_sim',
+        'Максимальное разрешение видео': 'max_video_resolution',
+        'Поддержка карт памяти': 'memory_card_support',
+        'Платформа': 'platform',
+        'Процессор': 'cpu',
+        'Тактовая частота процессора': 'clock_frequency_cpu',
+        'Количество ядер': 'number_of_cores',
+        'Разрядность процессора': 'cpu_size',
+        'Техпроцесс': 'technical_process',
+        'Графический ускоритель': 'graphics_accelerator',
+        'Частота ГПУ': 'gpu_frequency',
+        'Конструкция корпуса': 'body_design',
+        'Материал корпуса': 'body_material',
+        'Материал задней крышки': 'back_cover_material',
+        'Цвет корпуса': 'body_color',
+        'Цвет фронтальной панели': 'front_cover_color',
+        'Расположение фронтальной камеры': 'front_camera_location',
+        'Расположение сканера отпечатка пальца': 'fingerprint_reader_location',
+        'Ширина': 'width',
+        'Глубина': 'depth',
+        'Толщина': 'thickness',
+        'Вес': 'weight',
+        'Технология экрана': 'screen_technology',
+        'Количество цветов экрана': 'number_of_screen_colors',
+        'Разрешающая способность экрана': 'screen_ability_resolution',
+        'Соотношение сторон': 'aspect_ratio',
+        'Частота обновления экрана': 'screen_refresh_rate',
+        'Сенсорный экран': 'touch_screen',
+        'Защита от царапин': 'scratch_protection',
+        'Встроенная вспышка': 'built_in_flash',
+        'Автоматическая фокусировка': 'auto_focus',
+        'Оптическая стабилизация': 'optical_stabilization',
+        'Максимальное количество кадров в секунду': 'max_fps',
+        'Фронтальная камера': 'front_camera',
+        'Стереодинамики': 'stereo_speakers',
+        'Сканер отпечатка пальца': 'fingerprint_reader',
+        'Разблокировка по лицу': 'face_unlock',
+        'ИК-передатчик': 'ir_transmitter',
+        'FM-приёмник': 'fm_receiver',
+        'Беспроводная зарядка': 'wireless_charger',
+        'Быстрая зарядка': 'fast_charging',
+        'Акселерометр': 'accelerometer',
+        'Гироскоп': 'gyroscope',
+        'Датчик освещенности': 'light_sensor',
+        'Барометр': 'barometer',
+        'ANT+': 'ant',
+        'GPS': 'gps',
+        'ГЛОНАСС': 'glonass',
+        'Beidou': 'beidou',
+        'EDGE': 'edge',
+        'HSPA': 'hspa',
+        'HSPA+': 'hspa_plus',
+        'LTE': 'lte',
+        '5G': 'g5',
+        'Bluetooth': 'bluetooth',
+        'Аудиовыход': 'audio_output',
+        'Wi-Fi': 'wifi',
+        'Разъём подключения': 'connection_socket',
+        'NFC': 'nfc',
+        'Тип аккумулятора': 'battery_type',
+        'Емкость аккумулятора': 'battery_capacity'
     }
 }
 
@@ -118,10 +179,4 @@ def get_product_spec(product, model_name):
 @register.filter
 def product_spec(product):
     model_name = product.__class__._meta.model_name
-    # if isinstance(product, Smartphone):
-    #     if not product.sd:
-    #         # PRODUCT_SPEC['smartphone'].pop('Максимальный объем SD карты')
-    #         print('product.cd')
-    #     else:
-    #         PRODUCT_SPEC['smartphone']['Максимальный объем SD карты'] = 'sd_volume_max'
     return mark_safe(TABLE_HEAD + get_product_spec(product, model_name) + TABLE_TAIL)

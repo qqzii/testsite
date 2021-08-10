@@ -1,39 +1,292 @@
 <table class="product-main__table">
-  <tbody>
-    <tr class="product-main__row">
-      <td class="product-main__col">Диагональ</td>
-      <td class="product-main__col">{{ product.diagonal }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Тип дисплея</td>
-      <td class="product-main__col">{{ product.display_type }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Разрешение экрана</td>
-      <td class="product-main__col">{{ product.resolution }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Объем батареи</td>
-      <td class="product-main__col">{{ product.accum_volume }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Оперативная память</td>
-      <td class="product-main__col">{{ product.ram }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Наличие слота для SD карты</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Максимальный объем SD карты</td>
-      <td class="product-main__col">{{ product.sd_volume_max }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Главная камера (МП)</td>
-      <td class="product-main__col">{{ product.main_cam_mp }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Фронтальная камера (МП)</td>
-      <td class="product-main__col">{{ product.frontal_cam_mp }}</td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr class="product-main__row">
+            <td class="product-main__col">Дата выхода на рынок</td>
+            <td class="product-main__col">{{ product.market_date }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тип</td>
+            <td class="product-main__col">{{ product.type }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Операционная система</td>
+            <td class="product-main__col">{{ product.operating_system }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Версия операционной системы</td>
+            <td class="product-main__col">{{ product.version_operating_system }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Размер экрана</td>
+            <td class="product-main__col">{{ product.screen_size }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разрешение экрана</td>
+            <td class="product-main__col">{{ product.screen_resolution }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Оперативная память</td>
+            <td class="product-main__col">{{ product.ram }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Флэш-память</td>
+            <td class="product-main__col">{{ product.flash_memory }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество основных камер</td>
+            <td class="product-main__col">{{ product.number_of_main_cameras }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество точек матрицы</td>
+            <td class="product-main__col">{{ product.number_of_matrix_points }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество SIM-карт</td>
+            <td class="product-main__col">{{ product.number_of_sim }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Формат SIM-карты</td>
+            <td class="product-main__col">{{ product.format_of_sim }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Максимальное разрешение видео</td>
+            <td class="product-main__col">{{ product.max_video_resolution }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Поддержка карт памяти</td>
+            <td class="product-main__col">{{ product.memory_card_support }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Платформа</td>
+            <td class="product-main__col">{{ product.platform }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Процессор</td>
+            <td class="product-main__col">{{ product.cpu }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тактовая частота процессора</td>
+            <td class="product-main__col">{{ product.clock_frequency_cpu }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество ядер</td>
+            <td class="product-main__col">{{ product.number_of_cores }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разрядность процессора</td>
+            <td class="product-main__col">{{ product.cpu_size }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Техпроцесс</td>
+            <td class="product-main__col">{{ product.technical_process }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Графический ускоритель</td>
+            <td class="product-main__col">{{ product.graphics_accelerator }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Частота ГПУ</td>
+            <td class="product-main__col">{{ product.gpu_frequency }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Конструкция корпуса</td>
+            <td class="product-main__col">{{ product.body_design }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Материал корпуса</td>
+            <td class="product-main__col">{{ product.body_material }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Материал задней крышки</td>
+            <td class="product-main__col">{{ product.back_cover_material }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Цвет корпуса</td>
+            <td class="product-main__col">{{ product.body_color }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Цвет фронтальной панели</td>
+            <td class="product-main__col">{{ product.front_cover_color }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Расположение фронтальной камеры</td>
+            <td class="product-main__col">{{ product.front_camera_location }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Расположение сканера отпечатка пальца</td>
+            <td class="product-main__col">{{ product.fingerprint_reader_location }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Ширина</td>
+            <td class="product-main__col">{{ product.width }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Глубина</td>
+            <td class="product-main__col">{{ product.depth }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Толщина</td>
+            <td class="product-main__col">{{ product.thickness }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Вес</td>
+            <td class="product-main__col">{{ product.weight }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Технология экрана</td>
+            <td class="product-main__col">{{ product.screen_technology }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество цветов экрана</td>
+            <td class="product-main__col">{{ product.number_of_screen_colors }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разрешающая способность экрана</td>
+            <td class="product-main__col">{{ product.screen_ability_resolution }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Соотношение сторон</td>
+            <td class="product-main__col">{{ product.aspect_ratio }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Частота обновления экрана</td>
+            <td class="product-main__col">{{ product.screen_refresh_rate }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Сенсорный экран</td>
+            <td class="product-main__col">{{ product.touch_screen }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Защита от царапин</td>
+            <td class="product-main__col">{{ product.scratch_protection }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Встроенная вспышка</td>
+            <td class="product-main__col">{{ product.built_in_flash }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Автоматическая фокусировка</td>
+            <td class="product-main__col">{{ product.auto_focus }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Оптическая стабилизация</td>
+            <td class="product-main__col">{{ product.optical_stabilization }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Максимальное количество кадров в секунду</td>
+            <td class="product-main__col">{{ product.max_fps }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Фронтальная камера</td>
+            <td class="product-main__col">{{ product.front_camera }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Стереодинамики</td>
+            <td class="product-main__col">{{ product.stereo_speakers }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Сканер отпечатка пальца</td>
+            <td class="product-main__col">{{ product.fingerprint_reader }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разблокировка по лицу</td>
+            <td class="product-main__col">{{ product.face_unlock }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">ИК-передатчик</td>
+            <td class="product-main__col">{{ product.ir_transmitter }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">FM-приёмник</td>
+            <td class="product-main__col">{{ product.fm_receiver }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Беспроводная зарядка</td>
+            <td class="product-main__col">{{ product.wireless_charger }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Быстрая зарядка</td>
+            <td class="product-main__col">{{ product.fast_charging }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Акселерометр</td>
+            <td class="product-main__col">{{ product.accelerometer }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Гироскоп</td>
+            <td class="product-main__col">{{ product.gyroscope }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Датчик освещенности</td>
+            <td class="product-main__col">{{ product.light_sensor }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Барометр</td>
+            <td class="product-main__col">{{ product.barometer }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">ANT+</td>
+            <td class="product-main__col">{{ product.ant }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">GPS</td>
+            <td class="product-main__col">{{ product.gps }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">ГЛОНАСС</td>
+            <td class="product-main__col">{{ product.glonass }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Beidou</td>
+            <td class="product-main__col">{{ product.beidou }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">EDGE</td>
+            <td class="product-main__col">{{ product.edge }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">HSPA</td>
+            <td class="product-main__col">{{ product.hspa }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">HSPA+</td>
+            <td class="product-main__col">{{ product.hspa_plus }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">LTE</td>
+            <td class="product-main__col">{{ product.lte }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">5G</td>
+            <td class="product-main__col">{{ product.g5 }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Bluetooth</td>
+            <td class="product-main__col">{{ product.bluetooth }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Аудиовыход</td>
+            <td class="product-main__col">{{ product.audio_output }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Wi-Fi</td>
+            <td class="product-main__col">{{ product.wifi }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разъём подключения</td>
+            <td class="product-main__col">{{ product.connection_socket }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">NFC</td>
+            <td class="product-main__col">{{ product.nfc }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тип аккумулятора</td>
+            <td class="product-main__col">{{ product.battery_type }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Емкость аккумулятора</td>
+            <td class="product-main__col">{{ product.battery_capacity }}</td>
+        </tr>
+    </tbody>
 </table>
