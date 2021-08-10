@@ -48,9 +48,13 @@
     flex-wrap: wrap;
 }
 .products__block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background-color: white;
     margin-top: 10px;
     width: 250px;
+    height: 390px;
     font-family: 'Open Sans', sans-serif;
     box-shadow: 0 0 10px rgba(0,0,0,0.38);
 }
@@ -73,7 +77,6 @@
     font-size: 19px;
     font-weight: 500;
     color: #332929;
-    padding-bottom: 25px;
 }
 .products__add-to-cart{
     display: flex;

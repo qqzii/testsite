@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
     <section class="cart">
         <div class="container cart__container">
             <h2 class="cart__your-cart">Ваша корзина {% if not cart.product.count %}пуста{% endif %}</h2>
@@ -54,8 +55,8 @@
             {% endif %}
         </div>
     </section>
-{% endblock content %}
 
+{% endblock %}
 
 
 
