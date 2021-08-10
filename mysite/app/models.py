@@ -68,14 +68,16 @@ class CategoryManager(models.Manager):
 
     CATEGORY_NAME_COUNT_NAME = {
         'Ноутбуки': 'notebook__count',
-        'Смартфоны': 'smartphone__count'
+        'Смартфоны': 'smartphone__count',
+        'Умные часы': 'smartwatch__count',
+        'Электронные книги': 'ebook__count'
     }
 
     def get_queryset(self):
         return super().get_queryset()
 
     def get_categories_for_category_menu(self):
-        models = get_models_for_count('notebook', 'smartphone')
+        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook')
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -232,18 +234,6 @@ class Notebook(Product):
 
 class Smartphone(Product):
 
-    # diagonal = models.CharField(max_length=255, verbose_name='Диагональ')
-    # display_type = models.CharField(max_length=255, verbose_name='Тип дисплея')
-    # resolution = models.CharField(max_length=255, verbose_name='Разрешение экрана')
-    # accum_volume = models.CharField(max_length=255, verbose_name='Объем батареи')
-    # ram = models.CharField(max_length=255, verbose_name='Оперативная память')
-    # sd = models.BooleanField(default=True, verbose_name='Наличие SD карты')
-    # sd_volume_max = models.CharField(
-    #     max_length=255, null=True, blank=True, verbose_name='Максимальный объем встраиваемой памяти'
-    # )
-    # main_cam_mp = models.CharField(max_length=255, verbose_name='Главная камера')
-    # frontal_cam_mp = models.CharField(max_length=255, verbose_name='Фронтальная камера')
-
     market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
     type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
     operating_system = models.CharField(max_length=255, null=True, blank=True, verbose_name='Операционная система')
@@ -340,6 +330,120 @@ class Smartphone(Product):
     nfc = models.CharField(max_length=255, null=True, blank=True, verbose_name='NFC')
     battery_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип аккумулятора')
     battery_capacity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Емкость аккумулятора')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Smartwatch(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    flash_memory = models.CharField(max_length=255, null=True, blank=True, verbose_name='Флэш-память')
+    built_in_camera = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенная камера')
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    platform_support = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поддержка платформ')
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    body_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет корпуса')
+    built_in_music_player = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Встроенный музыкальный плеер'
+    )
+    calls = models.CharField(max_length=255, null=True, blank=True, verbose_name='Звонки')
+    voice_control = models.CharField(max_length=255, null=True, blank=True, verbose_name='Голосовое управление')
+    remote_control = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дистанционное управление')
+    contactless_payments = models.CharField(max_length=255, null=True, blank=True, verbose_name='Бесконтактные платежи')
+    vibration = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вибрация')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
+    thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+    bracelet_size = models.CharField(max_length=255, null=True, blank=True, verbose_name='Размеры браслета')
+    screen_technology = models.CharField(max_length=255, null=True, blank=True, verbose_name='Технология экрана')
+    number_of_screen_colors = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Количество цветов экрана'
+    )
+    screen_size = models.CharField(max_length=255, null=True, blank=True, verbose_name='Размер экрана')
+    screen_resolution = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разрешение экрана')
+    screen_ability_resolution = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Разрешающая способность экрана'
+    )
+    touch_screen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Сенсорный экран')
+    scratch_protection = models.CharField(max_length=255, null=True, blank=True, verbose_name='Защита от царапин')
+    accelerometer = models.CharField(max_length=255, null=True, blank=True, verbose_name='Акселерометр')
+    gyroscope = models.CharField(max_length=255, null=True, blank=True, verbose_name='Гироскоп')
+    light_sensor = models.CharField(max_length=255, null=True, blank=True, verbose_name='Датчик освещенности')
+    barometer = models.CharField(max_length=255, null=True, blank=True, verbose_name='Барометр')
+    pedometer = models.CharField(max_length=255, null=True, blank=True, verbose_name='Шагомер')
+    heart_rate = models.CharField(max_length=255, null=True, blank=True, verbose_name='Пульсометр')
+    ecg_sensor = models.CharField(max_length=255, null=True, blank=True, verbose_name='Датчик ЭКГ')
+    compass = models.CharField(max_length=255, null=True, blank=True, verbose_name='Компас')
+    depth_gauge = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубиномер')
+    gps = models.CharField(max_length=255, null=True, blank=True, verbose_name='GPS')
+    glonass = models.CharField(max_length=255, null=True, blank=True, verbose_name='ГЛОНАСС')
+    bluetooth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bluetooth')
+    audio_output = models.CharField(max_length=255, null=True, blank=True, verbose_name='Аудиовыход')
+    wifi = models.CharField(max_length=255, null=True, blank=True, verbose_name='Wi-Fi')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB')
+    nfc = models.CharField(max_length=255, null=True, blank=True, verbose_name='NFC')
+    battery_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип аккумулятора')
+    battery_capacity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Емкость аккумулятора')
+    working_hours = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время работы')
+    wireless_charger = models.CharField(max_length=255, null=True, blank=True, verbose_name='Беспроводная зарядка')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Ebook(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    screen_size = models.CharField(max_length=255, null=True, blank=True, verbose_name='Размер экрана')
+    screen_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип экрана')
+    screen_technology = models.CharField(max_length=255, null=True, blank=True, verbose_name='Технология экрана')
+    screen_resolution = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разрешение экрана')
+    os_version = models.CharField(max_length=255, null=True, blank=True, verbose_name='Версия операционной системы')
+    ram = models.CharField(max_length=255, null=True, blank=True, verbose_name='Оперативная память')
+    flash_memory = models.CharField(max_length=255, null=True, blank=True, verbose_name='Флэш-память')
+    built_in_camera = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенная камера')
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    body_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет корпуса')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина')
+    thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+    touch_screen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Сенсорный экран')
+    screen_backlight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Подсветка экрана')
+    support_txt_format = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Поддержка текстовых форматов'
+    )
+    support_photo_format = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Поддержка фото форматов'
+    )
+    support_audio_format = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Поддержка аудио форматов'
+    )
+    support_archive = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поддержка архивов')
+    support_video_format = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Поддержка видео форматов'
+    )
+    memory_card_support = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поддержка карт памяти')
+    sound_recording = models.CharField(max_length=255, null=True, blank=True, verbose_name='Запись звука')
+    built_in_speaker = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенный динамик')
+    built_in_microphone = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенный микрофон')
+    bluetooth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bluetooth')
+    audio_output = models.CharField(max_length=255, null=True, blank=True, verbose_name='Аудиовыход')
+    wifi = models.CharField(max_length=255, null=True, blank=True, verbose_name='Wi-Fi')
+    modem_3g = models.CharField(max_length=255, null=True, blank=True, verbose_name='3G-модем')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB')
+    battery_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип аккумулятора')
+    battery_capacity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Емкость аккумулятора')
+    battery_life = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время автономной работы')
+    charging_time = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время зарядки')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)

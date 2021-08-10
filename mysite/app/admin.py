@@ -70,9 +70,31 @@ class SmartphoneAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class SmartwatchAdmin(admin.ModelAdmin):
+
+    # form = SmartwatchAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='smartwatches'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class EbookAdmin(admin.ModelAdmin):
+
+    # form = EbookAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='ebooks'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 admin.site.register(Category)
 admin.site.register(Notebook, NotebookAdmin)
 admin.site.register(Smartphone, SmartphoneAdmin)
+admin.site.register(Smartwatch, SmartwatchAdmin)
+admin.site.register(Ebook, EbookAdmin)
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
