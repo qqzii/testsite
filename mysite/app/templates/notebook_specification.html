@@ -1,28 +1,276 @@
 <table class="product-main__table">
-  <tbody>
-    <tr class="product-main__row">
-      <td class="product-main__col">Диагональ</td>
-      <td class="product-main__col">{{ product.diagonal }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Тип дисплея</td>
-      <td class="product-main__col">{{ product.display_type }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Частота процессора</td>
-      <td class="product-main__col">{{ product.processor_freq }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Оперативная карта</td>
-      <td class="product-main__col">{{ product.ram }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Видеокарта</td>
-      <td class="product-main__col">{{ product.video }}</td>
-    </tr>
-    <tr class="product-main__row">
-      <td class="product-main__col">Время работы аккумулятора</td>
-      <td class="product-main__col">{{ product.time_without_charge }}</td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr class="product-main__row">
+            <td class="product-main__col">Дата выхода на рынок</td>
+            <td class="product-main__col">{{ product.market_date }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Продуктовая линейка</td>
+            <td class="product-main__col">{{ product.product_line }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тип</td>
+            <td class="product-main__col">{{ product.type }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Назначение</td>
+            <td class="product-main__col">{{ product.appointment }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Процессор</td>
+            <td class="product-main__col">{{ product.cpu }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Модель процессора</td>
+            <td class="product-main__col">{{ product.model_cpu }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество ядер</td>
+            <td class="product-main__col">{{ product.number_of_cores }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Количество потоков</td>
+            <td class="product-main__col">{{ product.number_of_threads }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тактовая частота</td>
+            <td class="product-main__col">{{ product.clock_frequency }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Turbo-частота</td>
+            <td class="product-main__col">{{ product.turbo_frequency }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Энергопотребление процессора</td>
+            <td class="product-main__col">{{ product.cpu_power_consumption }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Встроенная в процессор графика</td>
+            <td class="product-main__col">{{ product.processor_graphics }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Материал корпуса</td>
+            <td class="product-main__col">{{ product.body_material }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Цвет корпуса</td>
+            <td class="product-main__col">{{ product.body_color }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Материал крышки</td>
+            <td class="product-main__col">{{ product.cover_material }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Цвет крышки</td>
+            <td class="product-main__col">{{ product.cover_color }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Подсветка корпуса</td>
+            <td class="product-main__col">{{ product.body_backlight }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Защищенный корпус</td>
+            <td class="product-main__col">{{ product.body_protected }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Ширина</td>
+            <td class="product-main__col">{{ product.width }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Глубина</td>
+            <td class="product-main__col">{{ product.depth }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Толщина</td>
+            <td class="product-main__col">{{ product.thickness }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Вес</td>
+            <td class="product-main__col">{{ product.weight }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Диагональ экрана</td>
+            <td class="product-main__col">{{ product.screen_diagonal }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Разрешение экрана</td>
+            <td class="product-main__col">{{ product.screen_resolution }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Частота матрицы</td>
+            <td class="product-main__col">{{ product.matrix_frequency }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Технология экрана</td>
+            <td class="product-main__col">{{ product.screen_technology }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Яркость экрана</td>
+            <td class="product-main__col">{{ product.screen_brightness }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Поверхность экрана</td>
+            <td class="product-main__col">{{ product.screen_surface }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Экран</td>
+            <td class="product-main__col">{{ product.screen }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тип оперативной памяти</td>
+            <td class="product-main__col">{{ product.ram_type }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Частота оперативной памяти</td>
+            <td class="product-main__col">{{ product.ram_frequency }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Объём памяти</td>
+            <td class="product-main__col">{{ product.ram_volume }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Максимальный объём памяти</td>
+            <td class="product-main__col">{{ product.max_ram_volume }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Всего слотов памяти</td>
+            <td class="product-main__col">{{ product.total_memory_slots }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Свободных слотов памяти</td>
+            <td class="product-main__col">{{ product.free_memory_slots }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Конфигурация накопителя</td>
+            <td class="product-main__col">{{ product.drive_configuration }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Тип накопителя</td>
+            <td class="product-main__col">{{ product.drive_type }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Ёмкость накопителя</td>
+            <td class="product-main__col">{{ product.drive_volume }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Модель видеокарты</td>
+            <td class="product-main__col">{{ product.graphics_card_model }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Локальная видеопамять</td>
+            <td class="product-main__col">{{ product.local_video_memory }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Камера</td>
+            <td class="product-main__col">{{ product.camera }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Основная камера</td>
+            <td class="product-main__col">{{ product.main_cam }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Встроенный микрофон</td>
+            <td class="product-main__col">{{ product.microphone }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Встроенные динамики</td>
+            <td class="product-main__col">{{ product.speakers }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Цифровое поле</td>
+            <td class="product-main__col">{{ product.digital_field }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Управление курсором</td>
+            <td class="product-main__col">{{ product.cursor_control }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">NFC</td>
+            <td class="product-main__col">{{ product.nfc }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Bluetooth</td>
+            <td class="product-main__col">{{ product.bluetooth }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">LAN</td>
+            <td class="product-main__col">{{ product.lan }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Wi-Fi</td>
+            <td class="product-main__col">{{ product.wifi }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Всего USB Type A</td>
+            <td class="product-main__col">{{ product.usb_type_a }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 2.0</td>
+            <td class="product-main__col">{{ product.usb_2 }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 3.2 Gen1 Type-A</td>
+            <td class="product-main__col">{{ product.usb_32_gen1_a }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 3.2 Gen2 Type-A</td>
+            <td class="product-main__col">{{ product.usb_32_gen2_a }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Всего USB Type C</td>
+            <td class="product-main__col">{{ product.usb_type_c }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 3.2 Gen1 Type-C</td>
+            <td class="product-main__col">{{ product.usb_32_gen1_c }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 3.2 Gen2 Type-C</td>
+            <td class="product-main__col">{{ product.usb_32_gen2_c }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB 3.2 Gen 2x2</td>
+            <td class="product-main__col">{{ product.usb_32_gen2x2 }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">USB4</td>
+            <td class="product-main__col">{{ product.usb4 }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Максимальная скорость передачи данных USB</td>
+            <td class="product-main__col">{{ product.maximum_baud_rate_usb }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">HDMI</td>
+            <td class="product-main__col">{{ product.hdmi }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Аудио выходы</td>
+            <td class="product-main__col">{{ product.audio_outputs }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Запас энергии</td>
+            <td class="product-main__col">{{ product.energy_reserve }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Время работы</td>
+            <td class="product-main__col">{{ product.working_hours }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Зарядка ноутбука через USB Type-C</td>
+            <td class="product-main__col">{{ product.charge_via_type_c }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Адаптер питания USB-C</td>
+            <td class="product-main__col">{{ product.power_adapter_usb_c }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Быстрая зарядка</td>
+            <td class="product-main__col">{{ product.fast_charging }}</td>
+        </tr>
+        <tr class="product-main__row">
+            <td class="product-main__col">Операционная система</td>
+            <td class="product-main__col">{{ product.operating_system }}</td>
+        </tr>
+    </tbody>
 </table>
