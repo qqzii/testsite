@@ -65,16 +65,10 @@
     width: 310px;
     height: 310px;
     margin: 10px 0 10px 0;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0,0,0,0.38);
 }
-.main__block:nth-child(odd){
-    background-image: url("../img/notebooks_category.jpeg");
-    display: flex;
-    justify-content: start;
-    align-items: flex-end;
-}
-.main__block:nth-child(even){
-    background-image: url("../img/smartphone_category.jpg");
+.main__img{
+
 }
 .block__title{
     font-family: 'Open Sans', sans-serif;

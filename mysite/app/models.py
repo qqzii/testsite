@@ -87,6 +87,7 @@ class CategoryManager(models.Manager):
 class Category(models.Model):
 
     name = models.CharField(max_length=255, verbose_name='Название категории')
+    image = models.ImageField(verbose_name='Изображение', null=True)
     slug = models.SlugField(unique=True)
     objects = CategoryManager()
 
