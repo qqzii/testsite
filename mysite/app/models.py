@@ -77,7 +77,8 @@ class CategoryManager(models.Manager):
         'Коврики для мыши': 'mat__count',
         'Микрофоны': 'microphone__count',
         'Планшеты': 'tablet__count',
-        'Мониторы': 'monitor__count'
+        'Мониторы': 'monitor__count',
+        'Колонки': 'loudspeaker__count'
     }
 
     def get_queryset(self):
@@ -86,7 +87,7 @@ class CategoryManager(models.Manager):
     def get_categories_for_category_menu(self):
         models = get_models_for_count(
             'notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat', 'microphone', 'tablet',
-            'monitor'
+            'monitor', 'loudspeaker'
         )
         qs = list(self.get_queryset().annotate(*models))
         data = [
@@ -798,6 +799,65 @@ class Monitor(Product):
     max_screen_tilt_angle = models.CharField(
         max_length=255, null=True, blank=True, verbose_name='Максимальный угол наклона экрана'
     )
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
+    height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Loudspeaker(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    rms = models.CharField(max_length=255, null=True, blank=True, verbose_name='Номинальная мощность (RMS)')
+    supply = models.CharField(max_length=255, null=True, blank=True, verbose_name='Питание')
+    color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
+    stereo_speakers = models.CharField(max_length=255, null=True, blank=True, verbose_name='Стереодинамики')
+    panoramic_audio = models.CharField(max_length=255, null=True, blank=True, verbose_name='Панорамное аудио')
+    number_of_stripes = models.CharField(max_length=255, null=True, blank=True, verbose_name='Количество полос')
+    number_of_speakers = models.CharField(max_length=255, null=True, blank=True, verbose_name='Количество динамиков')
+    number_of_passive_speakers = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Количество пассивных динамиков'
+    )
+    acoustic_design = models.CharField(max_length=255, null=True, blank=True, verbose_name='Акустическое оформление')
+    frequency_range = models.CharField(max_length=255, null=True, blank=True, verbose_name='Частотный диапазон')
+    woofer_diameter = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Диаметр НЧ-динамика (вуфера)'
+    )
+    midrange_speaker_diameter = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Диаметр СЧ-динамика'
+    )
+    tweeter_diameter = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Диаметр ВЧ-динамика (твитера)'
+    )
+    speaker_diameter = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Диаметр широкополосного динамика'
+    )
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    display = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дисплей')
+    voice_assistant = models.CharField(max_length=255, null=True, blank=True, verbose_name='Голосовой ассистент')
+    streaming_services = models.CharField(max_length=255, null=True, blank=True, verbose_name='Стриминговые сервисы')
+    audio_codec_support = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Поддержка аудиокодеков Bluetooth'
+    )
+    sync = models.CharField(max_length=255, null=True, blank=True, verbose_name='Синхронизация')
+    remote_control = models.CharField(max_length=255, null=True, blank=True, verbose_name='Пульт ДУ')
+    body_backlight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Подсветка корпуса')
+    bluetooth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bluetooth')
+    wifi = models.CharField(max_length=255, null=True, blank=True, verbose_name='Wi-Fi')
+    dlna = models.CharField(max_length=255, null=True, blank=True, verbose_name='DLNA')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB')
+    ethernet = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ethernet')
+    battery_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип аккумулятора')
+    working_hours = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время работы')
+    charging_time = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время зарядки')
+    battery_capacity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Емкость аккумулятора')
     width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
     depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
     height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота')

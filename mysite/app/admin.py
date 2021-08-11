@@ -160,6 +160,16 @@ class MonitorAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class LoudspeakerAdmin(admin.ModelAdmin):
+
+    # form = LoudspeakerAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='loudspeakers'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 admin.site.register(Category)
 
 admin.site.register(Notebook, NotebookAdmin)
@@ -173,6 +183,7 @@ admin.site.register(Mat, MatAdmin)
 admin.site.register(Microphone, MicrophoneAdmin)
 admin.site.register(Tablet, TabletAdmin)
 admin.site.register(Monitor, MonitorAdmin)
+admin.site.register(Loudspeaker, LoudspeakerAdmin)
 
 admin.site.register(CartProduct)
 admin.site.register(Cart)
