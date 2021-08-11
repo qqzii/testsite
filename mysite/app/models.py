@@ -70,14 +70,16 @@ class CategoryManager(models.Manager):
         'Ноутбуки': 'notebook__count',
         'Смартфоны': 'smartphone__count',
         'Умные часы': 'smartwatch__count',
-        'Электронные книги': 'ebook__count'
+        'Электронные книги': 'ebook__count',
+        'Телевизоры': 'tv__count',
+        'Компьютерные мыши': 'mouse__count'
     }
 
     def get_queryset(self):
         return super().get_queryset()
 
     def get_categories_for_category_menu(self):
-        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook')
+        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse')
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(category=c, count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -439,6 +441,109 @@ class Ebook(Product):
     battery_capacity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Емкость аккумулятора')
     battery_life = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время автономной работы')
     charging_time = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время зарядки')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Tv(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    screen_diagonal = models.CharField(max_length=255, null=True, blank=True, verbose_name='Диагональ экрана')
+    screen_resolution = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разрешение экрана')
+    matrix_frequency = models.CharField(max_length=255, null=True, blank=True, verbose_name='Частота матрицы')
+    curved_screen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Изогнутый экран')
+    support_3d = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поддержка 3D')
+    image_quality_index = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Индекс качества изображения'
+    )
+    smart_tv = models.CharField(max_length=255, null=True, blank=True, verbose_name='Smart TV')
+    smart_tv_platform = models.CharField(max_length=255, null=True, blank=True, verbose_name='Платформа Smart TV')
+    system_version = models.CharField(max_length=255, null=True, blank=True, verbose_name='Версия системы')
+    frameless_design = models.CharField(max_length=255, null=True, blank=True, verbose_name='Безрамочный дизайн')
+    body_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет корпуса')
+    frame_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет рамки')
+    stand_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет подставки')
+    matrix_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип матрицы')
+    color_depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина цвета')
+    local_dimming = models.CharField(max_length=255, null=True, blank=True, verbose_name='Локальное затемнение')
+    hdr = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Расширенный динамический диапазон (HDR)'
+    )
+    extended_color_palette = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Расширенная цветовая палитра'
+    )
+    cpu = models.CharField(max_length=255, null=True, blank=True, verbose_name='Процессор')
+    voice_control = models.CharField(max_length=255, null=True, blank=True, verbose_name='Голосовое управление')
+    tv_tuner = models.CharField(max_length=255, null=True, blank=True, verbose_name='ТВ-тюнер')
+    subwoofer = models.CharField(max_length=255, null=True, blank=True, verbose_name='Сабвуфер')
+    sound_system_power = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Мощность звуковой системы'
+    )
+    hdmi_support = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поддержка HDMI eARC')
+    bluetooth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bluetooth')
+    wifi = models.CharField(max_length=255, null=True, blank=True, verbose_name='Wi-Fi')
+    hdmi = models.CharField(max_length=255, null=True, blank=True, verbose_name='HDMI')
+    hdmi_version = models.CharField(max_length=255, null=True, blank=True, verbose_name='Версия HDMI')
+    digital_output = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цифровой выход S/PDIF')
+    headphone_out = models.CharField(max_length=255, null=True, blank=True, verbose_name='Выход на наушники')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB')
+    ethernet = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ethernet')
+    airplay = models.CharField(max_length=255, null=True, blank=True, verbose_name='AirPlay')
+    smart_console = models.CharField(max_length=255, null=True, blank=True, verbose_name='Smart-пульт')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    height_plus = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота (с учетом подставки)')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина(с учетом подставки)')
+    height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота (без подставки)')
+    thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина панели')
+    weight_plus = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес (с подставкой)')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес (без подставки)')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Mouse(Product):
+
+    connection_interface = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Интерфейс подключения мыши'
+    )
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    appointment = models.CharField(max_length=255, null=True, blank=True, verbose_name='Назначение')
+    size = models.CharField(max_length=255, null=True, blank=True, verbose_name='Размер мыши')
+    sensor_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип сенсора')
+    sensor_model = models.CharField(max_length=255, null=True, blank=True, verbose_name='Модель сенсора')
+    max_sensor_resolution = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Максимальное разрешение сенсора'
+    )
+    max_polling_rate = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Максимальная частота опроса'
+    )
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    backlight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Подсветка')
+    color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
+    wire_length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина провода')
+    variable_resolution = models.CharField(max_length=255, null=True, blank=True, verbose_name='Изменяемое разрешение')
+    built_in_memory = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенная память')
+    response_time = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время отклика')
+    number_of_buttons = models.CharField(max_length=255, null=True, blank=True, verbose_name='Количество кнопок')
+    number_of_scroll_wheels = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Количество колёс прокрутки'
+    )
+    scroll_wheel_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип колеса прокрутки')
+    wire_braid = models.CharField(max_length=255, null=True, blank=True, verbose_name='Оплетка провода')
+    quiet_click = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тихий клик')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина')
+    height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)

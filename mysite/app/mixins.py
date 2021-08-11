@@ -10,7 +10,9 @@ class CategoryDetailMixin(SingleObjectMixin):
         'notebooks': Notebook,
         'smartphones': Smartphone,
         'smartwatches': Smartwatch,
-        'ebooks': Ebook
+        'ebooks': Ebook,
+        'tvs': Tv,
+        'mouses': Mouse
     }
 
     def get_context_data(self, **kwargs):

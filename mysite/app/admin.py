@@ -90,11 +90,35 @@ class EbookAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class TvAdmin(admin.ModelAdmin):
+
+    # form = TvAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='tvs'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+class MouseAdmin(admin.ModelAdmin):
+
+    # form = MouseAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='mouses'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 admin.site.register(Category)
+
 admin.site.register(Notebook, NotebookAdmin)
 admin.site.register(Smartphone, SmartphoneAdmin)
 admin.site.register(Smartwatch, SmartwatchAdmin)
 admin.site.register(Ebook, EbookAdmin)
+admin.site.register(Tv, TvAdmin)
+admin.site.register(Mouse, MouseAdmin)
+
 admin.site.register(CartProduct)
 admin.site.register(Cart)
 admin.site.register(Customer)
