@@ -76,7 +76,8 @@ class CategoryManager(models.Manager):
         'Игровые клавиатуры': 'keyboard__count',
         'Коврики для мыши': 'mat__count',
         'Микрофоны': 'microphone__count',
-        'Планшеты': 'tablet__count'
+        'Планшеты': 'tablet__count',
+        'Мониторы': 'monitor__count'
     }
 
     def get_queryset(self):
@@ -84,7 +85,8 @@ class CategoryManager(models.Manager):
 
     def get_categories_for_category_menu(self):
         models = get_models_for_count(
-            'notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat', 'microphone', 'tablet'
+            'notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat', 'microphone', 'tablet',
+            'monitor'
         )
         qs = list(self.get_queryset().annotate(*models))
         data = [
@@ -728,6 +730,77 @@ class Tablet(Product):
     width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
     length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина')
     thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Monitor(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    diagonal = models.CharField(max_length=255, null=True, blank=True, verbose_name='Диагональ')
+    aspect_ratio = models.CharField(max_length=255, null=True, blank=True, verbose_name='Соотношение сторон')
+    resolution = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разрешение')
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    matrix = models.CharField(max_length=255, null=True, blank=True, verbose_name='Матрица')
+    curved_screen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Изогнутый экран')
+    bending_radius = models.CharField(max_length=255, null=True, blank=True, verbose_name='Радиус изгиба')
+    screen_refresh_rate = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Частота обновления экрана'
+    )
+    flicker_free = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Отсутствие мерцания (Flicker-free)'
+    )
+    body_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет корпуса')
+    stand_color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет подставки')
+    hdr = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Расширенный динамический диапазон (HDR)'
+    )
+    screen_surface = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поверхность экрана')
+    touch_screen = models.CharField(max_length=255, null=True, blank=True, verbose_name='Сенсорный экран')
+    dynamic_refresh_rate = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Динамическая частота обновления экрана'
+    )
+    frame_sync_technology = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Технология синхронизации кадров'
+    )
+    brightness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Яркость')
+    contrast = models.CharField(max_length=255, null=True, blank=True, verbose_name='Контрастность')
+    srgb = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цветовой охват sRGB')
+    dci_p3 = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цветовой охват DCI-P3')
+    gtg = models.CharField(max_length=255, null=True, blank=True, verbose_name='Время отклика (GtG)')
+    horizontal_viewing_angle = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Угол обзора по горизонтали'
+    )
+    vertical_viewing_angle = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Угол обзора по вертикали'
+    )
+    power_supply = models.CharField(max_length=255, null=True, blank=True, verbose_name='Блок питания')
+    built_in_speakers = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенные динамики')
+    camera = models.CharField(max_length=255, null=True, blank=True, verbose_name='Камера')
+    microphone = models.CharField(max_length=255, null=True, blank=True, verbose_name='Микрофон')
+    frameless_design = models.CharField(max_length=255, null=True, blank=True, verbose_name='Безрамочный дизайн')
+    mhl = models.CharField(max_length=255, null=True, blank=True, verbose_name='MHL')
+    bluetooth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Bluetooth')
+    wifi = models.CharField(max_length=255, null=True, blank=True, verbose_name='Wi-Fi')
+    connection_interface = models.CharField(max_length=255, null=True, blank=True, verbose_name='Интерфейс подключения')
+    headphone_out = models.CharField(max_length=255, null=True, blank=True, verbose_name='Выход на наушники')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB')
+    hdmi = models.CharField(max_length=255, null=True, blank=True, verbose_name='HDMI')
+    ethernet = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ethernet')
+    vesa = models.CharField(max_length=255, null=True, blank=True, verbose_name='Крепление VESA')
+    turn_left_right = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поворот вправо-влево')
+    portrait_mode = models.CharField(max_length=255, null=True, blank=True, verbose_name='Портретный режим')
+    max_screen_tilt_angle = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Максимальный угол наклона экрана'
+    )
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
+    height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота')
     weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
 
     def __str__(self):

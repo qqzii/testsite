@@ -16,7 +16,8 @@ class CategoryDetailMixin(SingleObjectMixin):
         'keyboards': Keyboard,
         'mats': Mat,
         'microphones': Microphone,
-        'tablets': Tablet
+        'tablets': Tablet,
+        'monitors': Monitor
     }
 
     def get_context_data(self, **kwargs):
