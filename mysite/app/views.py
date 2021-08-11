@@ -16,7 +16,7 @@ class BaseView(CartMixin, View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.get_categories_for_category_menu()
         products = LatestProducts.objects.get_products_for_main_page(
-            'keyboard', 'mouse', 'tv', 'ebook', 'smartwatch', 'notebook', 'smartphone', with_respect_to='smartphone'
+            'mat', 'keyboard', 'mouse', 'tv', 'ebook', 'smartwatch', 'notebook', 'smartphone', with_respect_to='smartphone'
         )
         context = {
             'categories': categories,
@@ -35,7 +35,8 @@ class ProductDetailView(CartMixin, CategoryDetailMixin, DetailView):
         'ebook': Ebook,
         'tv': Tv,
         'mouse': Mouse,
-        'keyboard': Keyboard
+        'keyboard': Keyboard,
+        'mat': Mat
     }
 
     def dispatch(self, request, *args, **kwargs):

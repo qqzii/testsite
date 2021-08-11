@@ -344,6 +344,17 @@ PRODUCT_SPEC = {
         'Глубина': 'depth',
         'Толщина': 'thickness',
         'Вес': 'weight'
+    },
+    'mat': {
+        'Совместимость': 'compatibility',
+        'Материал поверхности': 'material',
+        'Цвет': 'color',
+        'Бортик': 'sideboard',
+        'Функциональные особенности': 'functional_features',
+        'Длина кабеля': 'cable_length',
+        'Ширина': 'width',
+        'Глубина': 'depth',
+        'Толщина': 'thickness',
     }
 }
 

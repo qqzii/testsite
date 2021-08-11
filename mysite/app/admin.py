@@ -120,6 +120,16 @@ class KeyboardAdmin(admin.ModelAdmin):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class MatAdmin(admin.ModelAdmin):
+
+    # form = MatAdminForm
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'category':
+            return ModelChoiceField(Category.objects.filter(slug='mats'))
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
 admin.site.register(Category)
 
 admin.site.register(Notebook, NotebookAdmin)
@@ -129,6 +139,7 @@ admin.site.register(Ebook, EbookAdmin)
 admin.site.register(Tv, TvAdmin)
 admin.site.register(Mouse, MouseAdmin)
 admin.site.register(Keyboard, KeyboardAdmin)
+admin.site.register(Mat, MatAdmin)
 
 admin.site.register(CartProduct)
 admin.site.register(Cart)

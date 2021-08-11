@@ -73,14 +73,15 @@ class CategoryManager(models.Manager):
         'Электронные книги': 'ebook__count',
         'Телевизоры': 'tv__count',
         'Компьютерные мыши': 'mouse__count',
-        'Игровые клавиатуры': 'keyboard__count'
+        'Игровые клавиатуры': 'keyboard__count',
+        'Коврики для мыши': 'mat__count'
     }
 
     def get_queryset(self):
         return super().get_queryset()
 
     def get_categories_for_category_menu(self):
-        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard')
+        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat')
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(category=c, count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -560,7 +561,9 @@ class Keyboard(Product):
     switch_technology = models.CharField(max_length=255, null=True, blank=True, verbose_name='Технология переключателя')
     appointment = models.CharField(max_length=255, null=True, blank=True, verbose_name='Назначение')
     color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
-    connection_interface = models.CharField(max_length=255, null=True, blank=True, verbose_name='Интерфейс подключения клавиатуры')
+    connection_interface = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Интерфейс подключения клавиатуры'
+    )
     digital_block = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цифровой блок')
     wire_length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина провода')
     body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
@@ -577,6 +580,27 @@ class Keyboard(Product):
     depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
     thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
     weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Mat(Product):
+
+    compatibility = models.CharField(max_length=255, null=True, blank=True, verbose_name='Совместимость')
+    material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал поверхности')
+    color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
+    sideboard = models.CharField(max_length=255, null=True, blank=True, verbose_name='Бортик')
+    functional_features = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Функциональные особенности'
+    )
+    cable_length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина кабеля')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
+    thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
