@@ -58,23 +58,27 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 16px 0 16px 0;
+    padding: 16px 0 32px 0;
     flex-wrap: wrap;
 }
 .main__block{
     width: 310px;
     height: 310px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0 30px 0;
     box-shadow: 0 0 10px rgba(0,0,0,0.38);
+    background-color: white;
 }
 .main__img{
-
+    width: 310px;
+    height: 283px;
 }
 .block__title{
     font-family: 'Open Sans', sans-serif;
-    color: darkred;
-    font-size: 18px;
-    margin: 10px;
+    color: #241D1D;
+    font-size: 20px;
+    text-align: center;
+    margin: 5px 0 10px 0;
+    background-color: white;
 }
 
 

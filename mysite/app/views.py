@@ -129,10 +129,12 @@ class CartView(CartMixin, View):
 class CheckoutView(CartMixin, View):
 
     def get(self, request, *args, **kwargs):
+        categories = Category.objects.get_categories_for_category_menu()
         form = OrderForm(request.POST or None)
         context = {
             'cart': self.cart,
-            'form': form
+            'form': form,
+            'categories': categories
         }
         return render(request, 'checkout.html', context)
 

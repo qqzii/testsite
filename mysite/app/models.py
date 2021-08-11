@@ -80,7 +80,7 @@ class CategoryManager(models.Manager):
         models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook')
         qs = list(self.get_queryset().annotate(*models))
         data = [
-            dict(name=c.name, url=c.get_absolute_url(), count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
+            dict(category=c, count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
             for c in qs
         ]
         return data
@@ -101,11 +101,6 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-
-    # MIN_RESOLUTION = (400, 400)
-    # MAX_RESOLUTION = (400, 600)
-    # RESIZE_RESOLUTION = (200, 200)
-    # MAX_IMAGE_SIZE = 5242880
 
     class Meta:
         abstract = True
