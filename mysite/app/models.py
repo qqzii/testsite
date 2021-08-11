@@ -74,14 +74,17 @@ class CategoryManager(models.Manager):
         'Телевизоры': 'tv__count',
         'Компьютерные мыши': 'mouse__count',
         'Игровые клавиатуры': 'keyboard__count',
-        'Коврики для мыши': 'mat__count'
+        'Коврики для мыши': 'mat__count',
+        'Микрофоны': 'microphone__count'
     }
 
     def get_queryset(self):
         return super().get_queryset()
 
     def get_categories_for_category_menu(self):
-        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat')
+        models = get_models_for_count(
+            'notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard', 'mat', 'microphone'
+        )
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(category=c, count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -601,6 +604,54 @@ class Mat(Product):
     width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
     depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
     thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Microphone(Product):
+
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    appointment = models.CharField(max_length=255, null=True, blank=True, verbose_name='Назначение')
+    view = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вид')
+    wireless_interface = models.CharField(max_length=255, null=True, blank=True, verbose_name='Беспроводной интерфейс')
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    pop_filter = models.CharField(max_length=255, null=True, blank=True, verbose_name='Поп-фильтр')
+    microphone_jack = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разъем(-ы) на микрофоне')
+    connector = models.CharField(max_length=255, null=True, blank=True, verbose_name='Разъем(-ы) подключения')
+    color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
+    focus = models.CharField(max_length=255, null=True, blank=True, verbose_name='Направленность')
+    variable_focus = models.CharField(max_length=255, null=True, blank=True, verbose_name='Изменяемая направленность')
+    sampling_frequency = models.CharField(max_length=255, null=True, blank=True, verbose_name='Частота дискретизации')
+    bottom_frequency_range_boundary = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Нижняя граница частотного диапазона'
+    )
+    top_frequency_range_boundary = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Верхняя граница частотного диапазона'
+    )
+    diaphragm_diameter = models.CharField(max_length=255, null=True, blank=True, verbose_name='Диаметр диафрагмы')
+    signal_to_noise_ratio = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Соотношение сигнал/шум'
+    )
+    sensitivity = models.CharField(max_length=255, null=True, blank=True, verbose_name='Чувствительность')
+    spl = models.CharField(max_length=255, null=True, blank=True, verbose_name='Макс. уровень звукового давления (SPL)')
+    coefficient_harmonic_distortion = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Коэф. гармонических искажений'
+    )
+    microphone_indication = models.CharField(
+        max_length=255, null=True, blank=True, verbose_name='Индикация на микрофоне'
+    )
+    cable_length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина кабеля')
+    headphone_out = models.CharField(max_length=255, null=True, blank=True, verbose_name='Выход на наушники')
+    control_elements = models.CharField(max_length=255, null=True, blank=True, verbose_name='Элементы управления')
+    microphone_power = models.CharField(max_length=255, null=True, blank=True, verbose_name='Питание микрофона')
+    backlight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Подсветка')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB для периферии')
+    digital_effects = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цифровые эффекты')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
 
     def __str__(self):
         return '{} : {}'.format(self.category.name, self.title)
