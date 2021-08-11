@@ -71,6 +71,7 @@
 .main__img{
     width: 310px;
     height: 283px;
+    background-color: white;
 }
 .block__title{
     font-family: 'Open Sans', sans-serif;

@@ -72,14 +72,15 @@ class CategoryManager(models.Manager):
         'Умные часы': 'smartwatch__count',
         'Электронные книги': 'ebook__count',
         'Телевизоры': 'tv__count',
-        'Компьютерные мыши': 'mouse__count'
+        'Компьютерные мыши': 'mouse__count',
+        'Игровые клавиатуры': 'keyboard__count'
     }
 
     def get_queryset(self):
         return super().get_queryset()
 
     def get_categories_for_category_menu(self):
-        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse')
+        models = get_models_for_count('notebook', 'smartphone', 'smartwatch', 'ebook', 'tv', 'mouse', 'keyboard')
         qs = list(self.get_queryset().annotate(*models))
         data = [
             dict(category=c, count=getattr(c, self.CATEGORY_NAME_COUNT_NAME[c.name]))
@@ -543,6 +544,38 @@ class Mouse(Product):
     width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
     length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина')
     height = models.CharField(max_length=255, null=True, blank=True, verbose_name='Высота')
+    weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
+
+    def __str__(self):
+        return '{} : {}'.format(self.category.name, self.title)
+
+    def get_absolute_url(self):
+        return get_product_url(self, 'product_detail')
+
+
+class Keyboard(Product):
+
+    market_date = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дата выхода на рынок')
+    type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип')
+    switch_technology = models.CharField(max_length=255, null=True, blank=True, verbose_name='Технология переключателя')
+    appointment = models.CharField(max_length=255, null=True, blank=True, verbose_name='Назначение')
+    color = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цвет')
+    connection_interface = models.CharField(max_length=255, null=True, blank=True, verbose_name='Интерфейс подключения клавиатуры')
+    digital_block = models.CharField(max_length=255, null=True, blank=True, verbose_name='Цифровой блок')
+    wire_length = models.CharField(max_length=255, null=True, blank=True, verbose_name='Длина провода')
+    body_material = models.CharField(max_length=255, null=True, blank=True, verbose_name='Материал корпуса')
+    additional_buttons = models.CharField(max_length=255, null=True, blank=True, verbose_name='Дополнительные кнопки')
+    key_shape = models.CharField(max_length=255, null=True, blank=True, verbose_name='Форма клавиш')
+    switch_type = models.CharField(max_length=255, null=True, blank=True, verbose_name='Тип переключателя')
+    built_in_memory = models.CharField(max_length=255, null=True, blank=True, verbose_name='Встроенная память')
+    key_illumination = models.CharField(max_length=255, null=True, blank=True, verbose_name='Подсветка клавиш')
+    wire_braid = models.CharField(max_length=255, null=True, blank=True, verbose_name='Оплетка провода')
+    usb = models.CharField(max_length=255, null=True, blank=True, verbose_name='USB-порт')
+    audio_input = models.CharField(max_length=255, null=True, blank=True, verbose_name='Аудиовход')
+    audio_output = models.CharField(max_length=255, null=True, blank=True, verbose_name='Аудиовыход')
+    width = models.CharField(max_length=255, null=True, blank=True, verbose_name='Ширина')
+    depth = models.CharField(max_length=255, null=True, blank=True, verbose_name='Глубина')
+    thickness = models.CharField(max_length=255, null=True, blank=True, verbose_name='Толщина')
     weight = models.CharField(max_length=255, null=True, blank=True, verbose_name='Вес')
 
     def __str__(self):

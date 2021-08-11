@@ -320,6 +320,30 @@ PRODUCT_SPEC = {
         'Длина': 'length',
         'Высота': 'height',
         'Вес': 'weight'
+    },
+    'keyboard': {
+        'Дата выхода на рынок': 'market_date',
+        'Тип': 'type',
+        'Технология переключателя': 'switch_technology',
+        'Назначение': 'appointment',
+        'Цвет': 'color',
+        'Интерфейс подключения клавиатуры': 'connection_interface',
+        'Цифровой блок': 'digital_block',
+        'Длина провода': 'wire_length',
+        'Материал корпуса': 'body_material',
+        'Дополнительные кнопки': 'additional_buttons',
+        'Форма клавиш': 'key_shape',
+        'Тип переключателя': 'switch_type',
+        'Встроенная память': 'built_in_memory',
+        'Подсветка клавиш': 'key_illumination',
+        'Оплетка провода': 'wire_braid',
+        'USB-порт': 'usb',
+        'Аудиовход': 'audio_input',
+        'Аудиовыход': 'audio_output',
+        'Ширина': 'width',
+        'Глубина': 'depth',
+        'Толщина': 'thickness',
+        'Вес': 'weight'
     }
 }
 
