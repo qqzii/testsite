@@ -6,6 +6,9 @@
     text-decoration:none;
     cursor: default;
 }
+a:hover{
+    cursor: pointer;
+}
 
 
 
