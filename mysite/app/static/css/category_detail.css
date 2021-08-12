@@ -37,8 +37,8 @@
 
 .products{
     width: 100%;
-    height: 100%;
     background-color: #F2ECEC;
+    min-height: 552px;
 }
 .products__container{
     display: flex;
